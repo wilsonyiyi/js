@@ -37,11 +37,26 @@ npm init vite-app --template preact
 
 ### 原理
 
-#### ES 模块 imports
+#### ES Module
+
+```html
+<script type="module">
+  import { add } from "./add.js";
+  console.log(add(1, 2));
+</script>
+```
+
+问题：
+
+1. 后缀名省略后如何解析
+2. 三方模块, es module 无法解析非相对路径的模块，必须符合三种路径格式`/`，`./`，`../`。vite 的解决思路是统一给模块加上`/@module/`前缀
 
 ```js
-<script type="module">
+// import { createApp } from "vue"
+import { createApp } from "/@module/vue";
 ```
+
+3.
 
 ### 构建方式比较
 

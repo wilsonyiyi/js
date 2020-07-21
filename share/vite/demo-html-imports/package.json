@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-router": "^9.1.0",
+    "vue": "^3.0.0-beta.24"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "demo-html-imports",
+  "version": "1.0.0",
+  "main": "add.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
