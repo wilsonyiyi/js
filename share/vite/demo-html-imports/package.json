@@ -11,7 +11,9 @@
   "name": "demo-html-imports",
   "version": "1.0.0",
   "main": "add.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.0-rc.4"
+  },
   "author": "",
   "license": "ISC",
   "description": ""
