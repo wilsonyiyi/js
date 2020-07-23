@@ -51,7 +51,7 @@
     "@vue/compiler-core" "3.0.0-beta.24"
     "@vue/shared" "3.0.0-beta.24"
 
-"@vue/compiler-dom@3.0.0-rc.4":
+"@vue/compiler-dom@3.0.0-rc.4", "@vue/compiler-dom@^3.0.0-rc.4":
   version "3.0.0-rc.4"
   resolved "https://registry.npm.taobao.org/@vue/compiler-dom/download/@vue/compiler-dom-3.0.0-rc.4.tgz#3c6b56f8c99797b46cf7935ffb1e538a1a1174c7"
   integrity sha1-PGtW+MmXl7Rs95Nf+x5TihoRdMc=

@@ -8,7 +8,7 @@
 
 ### 简介
 
-> vite 是一个开发阶段使用原生 [ES imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)，生产阶段使用 rollup 的构建工具。具有以下特点：
+> vite 是一个不需要打包的开发阶段的服务器，在生产阶段使用 rollup 进行构建。具有以下特点：
 >
 > - 快速的冷服务启动（？？？是什么，为什么，优势，实现）
 > - 模块热更新（？？？什么是热更新，实现，区别）
@@ -37,13 +37,41 @@ npm init vite-app --template preact
 
 ### 原理
 
-#### ES Module
+`cli:`
+构建服务
 
-```html
-<script type="module">
-  import { add } from "./add.js";
-  console.log(add(1, 2));
-</script>
+```ts
+(async () => {
+  const { help, h, mode, m, version, v } = argv;
+  const envMode = mode || m || defaultMode;
+  const options = await resolveOptions(envMode);
+  if (!options.command || options.command === "serve") {
+    // 开发阶段启动服务
+    runServe(options);
+  } else if (options.command === "build") {
+    runBuild(options);
+  } else if (options.command === "optimize") {
+    runOptimize(options);
+  } else {
+    console.error(chalk.red(`unknown command: ${options.command}`));
+    process.exit(1);
+  }
+})();
+
+async function runServe(options: UserConfig) {
+  const server = require("./server").createServer(options);
+
+  let port = options.port || 3000;
+  let hostname = options.hostname || "localhost";
+  const protocol = options.https ? "https" : "http";
+
+  server.listen(port, () => {
+    console.log(`  Dev server running at:`);
+    const interfaces = os.networkInterfaces();
+    console.log();
+    require("debug")("vite:server")(`server ready in ${Date.now() - start}ms.`);
+  });
+}
 ```
 
 问题：
@@ -56,16 +84,25 @@ npm init vite-app --template preact
 import { createApp } from "/@module/vue";
 ```
 
-3.
+3. 模块热更新
+
+`热更新的步骤：`
+
+```shell
+1. .vue文件被编译成.js文件
+2. 检测所有.js文件中的imports语句，rewrite路径引用，同时记录引用者与被引用者的关系用于HMR的分析
+3. 文件变化的时候，会触发HMR分析，查找文件的引用者链条
+```
 
 ### 构建方式比较
 
 ### 项目中应用
 
-#### 有哪些限制
+#### 为什么不能用于 vue2.x
 
 1. Vue 只适配 vue3.x，相关库也必须要适配 3.x 的版本。（为什么会有这个限制？）
 
 ### 参考
 
 1. [深入 vite 原理](https://www.tuicool.com/articles/EFJvEjf)
+2. [vite HMR 原理](https://juejin.im/post/5f0b419ff265da22bf12be56)

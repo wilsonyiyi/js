@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h1>测试css样式的解析</h1>
+    <br />
     <span>date is: {{ date }}</span>
     <button @click="updateDate">更新时间</button>
   </div>
@@ -8,7 +10,9 @@
 <script>
 export default {
   data() {
-    date: new Date().toTimeString();
+    return {
+      date: new Date().toTimeString(),
+    };
   },
   methods: {
     updateDate() {

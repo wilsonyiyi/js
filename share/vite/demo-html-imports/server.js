@@ -63,12 +63,8 @@ app.use(async (ctx, next) => {
     ctx.type = "application/javascript";
     ctx.body = rewriteBareModule(entryFileContent);
   } else if (url.indexOf(".vue") > 0) {
-    const theUrl = url.slice(1);
-    const filePath = path.resolve(
-      __dirname,
-      query ? theUrl.substr(0, theUrl.indexOf("?")) : theUrl
-    );
-    console.log(filePath);
+    const filePath = path.resolve(__dirname, url.split("?")[0].slice(1));
+    console.log("filpath: ", filePath);
     const content = fs.readFileSync(filePath, "utf-8");
     const { descriptor } = compilerSFC.parse(content);
     if (!query.type) {
@@ -84,10 +80,28 @@ app.use(async (ctx, next) => {
       ctx.type = "application/javascript";
       ctx.body = newContent;
     } else if (query.type === "template") {
+      // vue html
+      const templateJS = compilerDOM.compile(descriptor.template.content, {
+        mode: "module",
+      }).code;
       ctx.status = 200;
       ctx.type = "application/javascript";
-      ctx.body = compilerDOM.parse(descriptor.template.content);
+      ctx.body = rewriteBareModule(templateJS);
     }
+  } else if (url.endsWith(".css")) {
+    // 返回js脚本，注入css
+    const file = fs.readFileSync(
+      path.resolve(__dirname, url.slice(1)),
+      "utf-8"
+    );
+    const content = `const css = "${file.replace(/\r\n/g, "")}"
+      const styleTag = document.createElement('style')
+      styleTag.setAttribute('type', 'text/css')
+      document.head.appendChild(styleTag)
+      styleTag.innerHTML = css
+    `;
+    ctx.type = "application/javascript";
+    ctx.body = content;
   }
 });
 
