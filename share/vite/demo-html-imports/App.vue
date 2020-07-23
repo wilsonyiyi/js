@@ -1,14 +1,19 @@
 <template>
   <div>
-    <span>count is: {{ count }}</span>
-    <button @click="count++">click me</button>
+    <span>date is: {{ date }}</span>
+    <button @click="updateDate">更新时间</button>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    count: 0;
+    date: new Date().toTimeString();
+  },
+  methods: {
+    updateDate() {
+      this.date = new Date().toTimeString();
+    },
   },
 };
 </script>
