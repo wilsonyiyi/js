@@ -1,7 +1,10 @@
 const fs = require("fs");
 const path = require("path");
+const favicon = require('koa-favicon')
 const Koa = require("koa");
 const app = new Koa();
+
+app.use(favicon(__dirname + '/public/logo.png'))
 
 function rewriteBareModule(content) {
   const reg = /from\s+['"]([^'"]+)['"]/g;

@@ -8,12 +8,11 @@
 
 ### 简介
 
-> vite 是一个开发阶段使用原生 [ES imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)，生产阶段使用 rollup 的构建工具。具有以下特点：
+> vite 是一款基于浏览器原生 [ES imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)的开发服务器。生产阶段使用 rollup 进行构建。具有以下特点：
 >
-> - 快速的冷服务启动（？？？是什么，为什么，优势，实现）
+> - 快速的冷启动（？？？是什么，为什么，优势，实现）
 > - 模块热更新（？？？什么是热更新，实现，区别）
 > - 真正的按需编译（what？why？how？）
-> - 支持 TypeScript
 
 ### 如何使用
 
@@ -38,10 +37,11 @@ npm init vite-app --template preact
 ### 原理
 
 #### ES Module
+![caniuse](img/caniuse.png)
 
 ```html
 <script type="module">
-  import { add } from "./add.js";
+  import { add } from './add.js';
   console.log(add(1, 2));
 </script>
 ```
@@ -53,7 +53,7 @@ npm init vite-app --template preact
 
 ```js
 // import { createApp } from "vue"
-import { createApp } from "/@module/vue";
+import { createApp } from '/@module/vue';
 ```
 
 3.
@@ -69,3 +69,4 @@ import { createApp } from "/@module/vue";
 ### 参考
 
 1. [深入 vite 原理](https://www.tuicool.com/articles/EFJvEjf)
+2. [vite 如何做到让 vue 本地开发更快速](https://developer.aliyun.com/article/761551)
