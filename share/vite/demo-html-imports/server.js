@@ -1,9 +1,12 @@
 const fs = require("fs");
 const path = require("path");
+const favicon = require('koa-favicon')
 const Koa = require("koa");
 const app = new Koa();
 const compilerSFC = require("@vue/compiler-sfc");
 const compilerDOM = require("@vue/compiler-dom");
+
+app.use(favicon(__dirname + '/public/logo.png'))
 
 function rewriteBareModule(content) {
   const reg = /from\s+['"]([^'"]+)['"]/g;

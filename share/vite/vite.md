@@ -10,10 +10,9 @@
 
 > vite 是一个不需要打包的开发阶段的服务器，在生产阶段使用 rollup 进行构建。具有以下特点：
 >
-> - 快速的冷服务启动（？？？是什么，为什么，优势，实现）
+> - 快速的冷启动（？？？是什么，为什么，优势，实现）
 > - 模块热更新（？？？什么是热更新，实现，区别）
 > - 真正的按需编译（what？why？how？）
-> - 支持 TypeScript
 
 ### 如何使用
 
@@ -106,3 +105,4 @@ import { createApp } from "/@module/vue";
 
 1. [深入 vite 原理](https://www.tuicool.com/articles/EFJvEjf)
 2. [vite HMR 原理](https://juejin.im/post/5f0b419ff265da22bf12be56)
+3. [vite 如何做到让 vue 本地开发更快速](https://developer.aliyun.com/article/761551)
