@@ -10,13 +10,11 @@
 
 > vite 是一个不需要打包的开发阶段的服务器，在生产阶段使用 rollup 进行构建。具有以下特点：
 >
-> - 快速的冷启动（？？？是什么，为什么，优势，实现）
-> - 模块热更新（？？？什么是热更新，实现，区别）
-> - 真正的按需编译（what？why？how？）
+> - 快速的冷启动
+> - 模块热更新
+> - 真正的按需编译
 
 ### 如何使用
-
-新项目：
 
 ```shell
 # vue3.x
@@ -31,8 +29,6 @@ npm init vite-app --template react
 # preact
 npm init vite-app --template preact
 ```
-
-已有项目改造：
 
 ### 原理
 
@@ -75,8 +71,7 @@ async function runServe(options: UserConfig) {
 
 问题：
 
-1. 后缀名省略后如何解析
-2. 三方模块, es module 无法解析非相对路径的模块，必须符合三种路径格式`/`，`./`，`../`。vite 的解决思路是统一给模块加上`/@module/`前缀
+1. 三方模块, es module 无法解析非相对路径的模块，必须符合三种路径格式`/`，`./`，`../`。vite 的解决思路是统一给模块加上`/@module/`前缀
 
 ```js
 // import { createApp } from "vue"
