@@ -32,6 +32,31 @@ npm init vite-app --template preact
 ```
 
 ### 原理
+vite原理是基于[ES模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)，浏览器对模块化的支持参差不齐，这决定了vite的模式只能用于开发阶段。现代浏览器是如何支持es模块的，形式上只需要将内容通过带有`type="module"`属性的`script`标签引入，在该`script`标签内就能使用`import` `export`语法了。需要注意的是，import的模块将使用http形式获取。
+
+![ES Module](img/caniuse.png)
+
+```html
+<script type="module">
+  import { add } from './a.js'
+  a(1,2)
+</script>
+```
+
+`在不编译的前提下，使用浏览器模块化如何解决项目遇到的问题：`
+
+1. 三方模块, es module 无法解析非相对路径的模块，必须符合三种路径格式`/`，`./`，`../`。vite 的解决思路是统一给模块加上`/@module/`前缀
+2. 样式怎么解决
+3. 路径别名
+4. 环境变量
+5. typescript
+6. 模块热更新
+
+```js
+// import { createApp } from "vue"
+import { createApp } from "/@module/vue";
+```
+
 配合es module的网络请求
 
 ![vite流程图](img/url-request.png)
@@ -75,26 +100,6 @@ async function runServe(options: UserConfig) {
     require("debug")("vite:server")(`server ready in ${Date.now() - start}ms.`);
   });
 }
-```
-
-问题：
-
-1. 三方模块, es module 无法解析非相对路径的模块，必须符合三种路径格式`/`，`./`，`../`。vite 的解决思路是统一给模块加上`/@module/`前缀
-
-```js
-// import { createApp } from "vue"
-import { createApp } from "/@module/vue";
-```
-
-3. 模块热更新
-
-`热更新的步骤：`
-
-```shell
-1. .vue文件被编译成.js文件
-2. 检测所有.js文件中的imports语句，rewrite路径引用，同时记录引用者与被引用者的关系用于HMR的分析
-3. 文件变化的时候，会触发HMR分析，查找文件的引用者链条
-4. ......
 ```
 
 ### 项目中应用
