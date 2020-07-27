@@ -16,8 +16,6 @@
 
 ### 如何使用
 
-新项目：
-
 ```shell
 # vue3.x
 $ npm init vite-app <project-name>
@@ -31,8 +29,6 @@ npm init vite-app --template react
 # preact
 npm init vite-app --template preact
 ```
-
-已有项目改造：
 
 ### 原理
 
@@ -75,8 +71,7 @@ async function runServe(options: UserConfig) {
 
 问题：
 
-1. 后缀名省略后如何解析
-2. 三方模块, es module 无法解析非相对路径的模块，必须符合三种路径格式`/`，`./`，`../`。vite 的解决思路是统一给模块加上`/@module/`前缀
+1. 三方模块, es module 无法解析非相对路径的模块，必须符合三种路径格式`/`，`./`，`../`。vite 的解决思路是统一给模块加上`/@module/`前缀
 
 ```js
 // import { createApp } from "vue"
