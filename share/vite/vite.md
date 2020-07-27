@@ -34,7 +34,7 @@ npm init vite-app --template preact
 ### 原理
 vite原理是基于[ES模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)，浏览器对模块化的支持参差不齐，这决定了vite的模式只能用于开发阶段。现代浏览器是如何支持es模块的，形式上只需要将内容通过带有`type="module"`属性的`script`标签引入，在该`script`标签内就能使用`import` `export`语法了。需要注意的是，import的模块将使用http形式获取。
 
-![ES Module](img/caniuse.png)
+![ES Module](img/caniuse.jpg)
 
 ```html
 <script type="module">
