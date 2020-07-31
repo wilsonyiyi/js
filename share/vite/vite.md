@@ -110,3 +110,4 @@ async function runServe(options: UserConfig) {
 1. [深入 vite 原理](https://www.tuicool.com/articles/EFJvEjf)
 2. [vite HMR 原理](https://juejin.im/post/5f0b419ff265da22bf12be56)
 3. [vite 如何做到让 vue 本地开发更快速](https://developer.aliyun.com/article/761551)
+4. [彻底告别编译 OOM，用 esbuild 做压缩器](https://zhuanlan.zhihu.com/p/139219361)
