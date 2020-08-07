@@ -1,0 +1,2 @@
+/* 这里的引用好多余，但是不引用umi.css中不会包含.ant-form-*的内容，问题应该出现在umi */
+@import '~antd/dist/antd.min.css';
