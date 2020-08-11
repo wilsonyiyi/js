@@ -19,7 +19,7 @@ export default defineConfig({
       routes: [
         {
           path: '/basic/schema',
-          name: 'schema',
+          name: '描述方式',
           component: './basic/schema',
         },
       ],
