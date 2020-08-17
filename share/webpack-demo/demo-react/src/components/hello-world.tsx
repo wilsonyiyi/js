@@ -1,5 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function() {
-    return <span>1234</span>
+export default function () {
+  return <span>13334</span>;
 }

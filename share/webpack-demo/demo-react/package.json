@@ -4,14 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rm -r dist && webpack"
+    "build": "rimraf dist && webpack"
   },
   "devDependencies": {
     "@babel/core": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
     "html-webpack-plugin": "^4.3.0",
+    "rimraf": "^3.0.2",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
