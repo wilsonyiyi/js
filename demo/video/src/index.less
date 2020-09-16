@@ -1,0 +1,103 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #000000;
+}
+
+img {
+	display: block;
+}
+
+body {
+	font: 14px/1.5 Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei,
+		sans-serif;
+	min-width: 1226px;
+	background-color: #f5f5f5;
+	height: 2000px;
+}
+
+.ellipsis {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.clearfix:before {
+	display: table;
+	content: ' ';
+	clear: both;
+}
+
+#video-list {
+	margin: 300px auto 0;
+	width: 1245px;
+	height: 285px;
+	transform: translateY(-50%);
+}
+
+.video-item {
+	position: relative;
+	display: inline-block;
+	margin-right: 14px;
+	margin-bottom: 14px;
+	width: 296px;
+	height: 285px;
+	background-color: #fff;
+	transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.video-item:hover {
+	transform: translateY(-10px);
+	box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.video-item:hover .figure .play i {
+	color: orange;
+	transition: color 0.3s ease-in-out;
+}
+
+.figure {
+	position: relative;
+	height: 180px;
+	margin-bottom: 28px;
+}
+
+.figure .play {
+	position: absolute;
+	left: 19px;
+	bottom: 10px;
+	color: #fff;
+}
+
+.figure .play i {
+	font-size: 24px;
+}
+
+.video-item:last-child {
+	margin-right: 0;
+}
+
+.video-item .title {
+	padding: 3px 10px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 400;
+	color: #333;
+}
+
+.video-item .desc {
+	padding: 3px 10px;
+	height: 24px;
+	color: #b0b0b0;
+	text-align: center;
+	font-size: 12px;
+}
